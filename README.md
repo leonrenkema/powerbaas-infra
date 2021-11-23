@@ -1,6 +1,6 @@
 # Setup
 
-Voordat deze docker-compose gebruikt kan worden moet Docker en docker-compose geïnstalleerd zijn. 
+Voordat deze docker-compose gebruikt kan worden moeten Docker en docker-compose geïnstalleerd zijn. 
 
 Docker installeren kan redelijk eenvoudig met het volgende commando:
 ```
@@ -16,3 +16,9 @@ docker-compose up -d
 ```
 
 http://raspberrypi:3000
+
+# Stoppen
+
+```
+docker-compose stop
+```
