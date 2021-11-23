@@ -1,0 +1,35 @@
+version: "3.9"
+    
+services:
+  influxdb:
+    image: influxdb:1.8
+    volumes:
+      - db_data:/var/lib/influxdb
+ 
+  grafana:
+    depends_on:
+      - influxdb
+      - broker
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+  broker:
+    image: eclipse-mosquitto:1.6
+    ports:
+      - "1883:1883"
+
+  telegraf:
+    image: telegraf
+    volumes:
+      - "./telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+
+volumes:
+  db_data: {}
+  grafana_data: {}
+
+networks:
+  default:
+    name: powerbaas
