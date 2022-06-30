@@ -3,8 +3,11 @@ version: "3.9"
 services:
   influxdb:
     image: influxdb:1.8
+    ports:
+      - "8086:8086"
     volumes:
       - db_data:/var/lib/influxdb
+      - "./influxdb.conf:/etc/influxdb/influxdb.conf:ro"
  
   grafana:
     depends_on:
